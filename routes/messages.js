@@ -3,9 +3,9 @@ const Message = require("../models/Messages");
 
 const router = express.Router();
 
+//GET ALL MESSAGES
 router.get("/", async (req, res) => {
 	try {
-		console.log("GET msgs")
 		const posts = await Message.find();
 		res.json(posts);
 	} catch(error) {
@@ -13,11 +13,22 @@ router.get("/", async (req, res) => {
 	}
 });
 
+//GET 5 RANDOM MESSAGES
+router.get("/random", async (req, res) => {
+	try {
+		const random = await Message.aggregate([{ $sample: {size: 5} }]);
+		res.json(random);
+	} catch(error) {
+		res.json({message: error});
+	}
+});
+
 router.post("/", async (req, res) => {
 	console.log(req.body);
 
 	const message = new Message({
-		text: req.body.text
+		text: req.body.text,
+		name: req.body.name
 	});
 	
 	try {

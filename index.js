@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 4000;
 app.use(bodeParser.json());
 
 app.get("/", (req, res) => {
-	res.send(`Server is up and running ${process.env.USER_NAME}`);
+	res.send(`Server is up and running`);
 });
 
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true,  useUnifiedTopology: true}, () => {
