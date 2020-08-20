@@ -7,7 +7,7 @@ require("dotenv").config();
 //Routes import
 const routes = require("./routes/messages");
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 
 //MIDDLEWARE
 app.use(bodeParser.json());

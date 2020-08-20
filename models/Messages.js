@@ -5,6 +5,7 @@ const Schema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	name: String,
 	createdOn: {
 		type: Date,
 		default: Date.now,

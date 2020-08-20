@@ -3,8 +3,14 @@ const Message = require("../models/Messages");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-	res.send("We are on messages");
+router.get("/", async (req, res) => {
+	try {
+		console.log("GET msgs")
+		const posts = await Message.find();
+		res.json(posts);
+	} catch(error) {
+		res.json({ message: error });
+	}
 });
 
 router.post("/", async (req, res) => {
